@@ -1,1 +1,367 @@
+/* ============================================================
+   styles.css
+   CSS Basics & Box Model — creative styling
+   - External stylesheet for index.html
+   - No JS, no external frameworks
+   ============================================================ */
+
+/* -------------------- Root variables -------------------- */
+:root{
+  --bg: #0f1720;           /* deep background */
+  --panel: #f8f9fb;        /* card background */
+  --muted: #6b7280;        /* muted text */
+  --text: #0b1220;         /* main text on panels */
+  --accent: #ff7a59;       /* warm coral accent */
+  --accent-2: #00c2a8;     /* teal accent */
+  --glass: rgba(255,255,255,0.06);
+
+  --radius: 12px;
+  --gap: 1.25rem;
+  --container-max: 1100px;
+}
+
+/* -------------------- Base reset -------------------- */
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+html,body{
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 450px at 10% 10%, rgba(0,194,168,0.08), transparent 8%),
+              linear-gradient(180deg,#071019 0%, #071827 100%);
+  color: var(--panel);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.55;
+}
+
+/* Skip link (visible on keyboard focus) */
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background: #000;
+}
+.skip-link:focus{
+  left: 10px;
+  top: 10px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #fff;
+  color: #071827;
+  z-index: 9999;
+}
+
+/* -------------------- Container -------------------- */
+.container{
+  width: min(var(--container-max), 92%);
+  margin-inline: auto;
+  padding-block: 2rem;
+}
+
+/* -------------------- Header -------------------- */
+.site-header{
+  padding-block: 2.25rem;
+  background: linear-gradient(90deg, rgba(255,122,89,0.06), rgba(0,194,168,0.04));
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: var(--panel);
+}
+
+.brand{
+  display:flex;
+  gap: 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap:wrap;
+}
+
+.site-title{
+  font-size: 1.6rem;
+  margin: 0;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+.tagline{
+  margin: 0.25rem 0 0;
+  color: #cfeee9;
+  font-size: 0.95rem;
+}
+
+/* nav */
+.primary-nav ul{
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  padding:0;
+  margin: 0.75rem 0 0;
+  flex-wrap:wrap;
+}
+
+.primary-nav a{
+  display:inline-block;
+  color: #dffbf3;
+  text-decoration: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.primary-nav a:hover,
+.primary-nav a:focus{
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, rgba(255,122,89,0.12), rgba(0,194,168,0.08));
+  outline: none;
+}
+
+/* -------------------- Sections -------------------- */
+.section{
+  margin-block: 2.25rem;
+}
+
+/* headings */
+h2{
+  color: var(--panel);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  border-left: 4px solid rgba(255,122,89,0.15);
+  padding-left: 0.75rem;
+}
+
+.intro{
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* -------------------- Grid & Cards -------------------- */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 1.25rem;         /* PADDING: internal spacing (box model) */
+  border-radius: var(--radius);
+  box-shadow: 0 6px 24px rgba(2,6,23,0.6);
+  min-height: 140px;
+}
+
+.card h3{
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.card p{
+  color: var(--muted);
+  margin: 0 0 0.6rem;
+}
+
+.card.highlight{
+  border: 6px solid rgba(255,122,89,0.18);
+  background: linear-gradient(180deg, rgba(255,122,89,0.03), rgba(255,255,255,0.01));
+}
+
+/* small note text inside cards */
+.note{
+  display:inline-block;
+  margin-top:0.75rem;
+  color: #dceef0;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.02);
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+}
+
+/* -------------------- Box Model Lab -------------------- */
+.lab-row{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  align-items:start;
+  margin-top: 1rem;
+}
+
+.demo{
+  color: var(--panel);
+}
+
+.demo-box{
+  width: 240px;            /* set width to observe effects */
+  padding: 16px;           /* padding inside the box */
+  border: 8px solid rgba(255,122,89,0.16);  /* border thickness affects total size in content-box */
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+  margin-top: 0.75rem;     /* margin is outside the box */
+}
+
+/* SHOW DIFFERENCE */
+.content-box{
+  box-sizing: content-box;  /* default behavior: width applies to content only */
+}
+
+.border-box{
+  box-sizing: border-box;   /* width includes padding + border */
+  border-color: rgba(0,194,168,0.16);
+  background: rgba(0,194,168,0.03);
+}
+
+/* demo text */
+.demo-text{
+  margin: 0;
+  color: #e7f7f4;
+  font-size: 0.95rem;
+}
+
+/* hint text */
+.hint{
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* small try note */
+.try{
+  margin-top: 1rem;
+  color: #bfcbd8;
+}
+
+/* -------------------- Table demo -------------------- */
+.demo-table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.demo-table th,
+.demo-table td{
+  padding: 0.65rem 0.9rem;   /* padding for readable cells */
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: #eaf6f2;
+}
+
+.demo-table thead th{
+  color: #fff;
+  background: rgba(255,255,255,0.02);
+}
+
+/* -------------------- Form styles -------------------- */
+.demo-form{
+  margin-top: 1rem;
+  max-width: 680px;
+}
+
+fieldset{
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+}
+
+legend{
+  padding: 0 .5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+label{
+  display:block;
+  margin-top: 0.75rem;
+  color: #dbeee7;
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+textarea{
+  display:block;
+  width: 100%;
+  padding: 0.6rem 0.75rem;    /* padding inside input */
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+  margin-top: 0.35rem;
+  transition: box-shadow 0.12s ease, transform 0.08s ease;
+}
+
+input:focus,
+textarea:focus{
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0,194,168,0.14);
+  transform: translateY(-1px);
+}
+
+/* form row with buttons */
+.form-row{
+  margin-top: 1rem;
+  display:flex;
+  gap: 0.65rem;
+  flex-wrap:wrap;
+}
+
+/* -------------------- Buttons -------------------- */
+.btn{
+  background: linear-gradient(45deg, var(--accent), var(--accent-2));
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(15,26,35,0.6);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.btn-ghost{
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:none;
+}
+
+.btn:hover,
+.btn:focus{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(15,26,35,0.6);
+}
+
+/* -------------------- Footer -------------------- */
+.site-footer{
+  margin-top: 2.5rem;
+  padding-block: 1.25rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* -------------------- Responsive tweaks -------------------- */
+@media (max-width: 720px){
+  .brand{
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .primary-nav ul{
+    gap: 0.4rem;
+  }
+  .demo-box{
+    margin-inline: auto;
+  }
+}
 

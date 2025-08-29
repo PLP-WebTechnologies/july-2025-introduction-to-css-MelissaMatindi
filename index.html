@@ -1,1 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="CSS Basics & Box Model lab — a creative demo of CSS selectors, spacing, borders, padding, and layout." />
+  <meta name="keywords" content="CSS, Box Model, margin, padding, border, layout, styles" />
+  <title>CSS Basics & Box Model — Creative Demo</title>
+
+  <!-- Link external stylesheet (styles.css) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Skip link for keyboard/screen-reader users -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="brand">
+        <h1 class="site-title">CSS Basics & Box Model</h1>
+        <p class="tagline">A creative, visual exploration of spacing, sizing, and layout.</p>
+      </div>
+
+      <nav class="primary-nav" role="navigation" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#lab">Box Model Lab</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <!-- Overview -->
+    <section id="overview" class="section">
+      <h2>Overview</h2>
+      <p>
+        This page demonstrates core CSS fundamentals: selectors, typography, backgrounds,
+        and the <strong>Box Model</strong> (content, padding, border, margin). Use this as a
+        lab — change values in <code>styles.css</code> and watch layout behavior adapt.
+      </p>
+    </section>
+
+    <!-- Cards demonstrating margins, padding, border -->
+    <section id="cards" class="section">
+      <h2>Cards & Visual Spacing</h2>
+      <p class="intro">
+        Cards below use consistent padding, margin and border to create a neat visual rhythm.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Padding (inside)</h3>
+          <p>Padding increases the white space <em>inside</em> the border — it pushes content inward.</p>
+          <p class="note">This card uses <code>padding: 1.25rem;</code>.</p>
+        </article>
+
+        <article class="card highlight">
+          <h3>Border (edge)</h3>
+          <p>Borders define the visible edge of an element and are included in the Box Model calculations.</p>
+          <p class="note">This card uses <code>border: 6px solid var(--accent)</code> for emphasis.</p>
+        </article>
+
+        <article class="card">
+          <h3>Margin (outside)</h3>
+          <p>Margins create space <em>outside</em> an element and separate elements from one another.</p>
+          <p class="note">This card has a bottom margin to separate sections in flow.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Box Model Lab -->
+    <section id="lab" class="section">
+      <h2>Box Model Lab</h2>
+      <p>
+        Both demo boxes below are given the same <code>width</code>, <code>padding</code> and
+        <code>border</code> values — but different <code>box-sizing</code>. Observe the total
+        rendered width and how padding+border are included or excluded.
+      </p>
+
+      <div class="lab-row">
+        <figure class="demo">
+          <figcaption><strong>content-box</strong> (default)</figcaption>
+          <div class="demo-box content-box">
+            <p class="demo-text">Width: <code>240px</code> + padding + border → total larger than 240px</p>
+          </div>
+          <p class="hint">Total width expands because padding & border are added outside the content area.</p>
+        </figure>
+
+        <figure class="demo">
+          <figcaption><strong>border-box</strong></figcaption>
+          <div class="demo-box border-box">
+            <p class="demo-text">Width: <code>240px</code> includes padding & border → stays 240px total</p>
+          </div>
+          <p class="hint">Padding and border are included inside the declared width.</p>
+        </figure>
+      </div>
+
+      <p class="try">Try resizing your browser to see how the boxes behave responsively.</p>
+    </section>
+
+    <!-- Table demo (optional, shows layout control for tabular data) -->
+    <section id="table-demo" class="section">
+      <h2>Quick Table — Spacing for Data</h2>
+      <p class="intro">Tables require careful padding and borders for readable rows.</p>
+      <table class="demo-table" summary="Sample schedule showing days, topics, and duration">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topic</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mon</td>
+            <td>Selectors & Basics</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Wed</td>
+            <td>Box Model & Spacing</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Fri</td>
+            <td>Responsive Layout</td>
+            <td>2 hrs</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Contact form (CSS-only demonstration) -->
+    <section id="contact" class="section">
+      <h2>Practice Form (CSS styling only)</h2>
+      <p class="intro">This form demonstrates consistent padding, border-radius and focus outlines for accessibility.</p>
+
+      <form action="#" method="post" class="demo-form" novalidate>
+        <fieldset>
+          <legend>Get in touch</legend>
+
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Jane Doe" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Write a short message..."></textarea>
+
+          <div class="form-row">
+            <button class="btn" type="submit">Send Message</button>
+            <button class="btn btn-ghost" type="reset">Reset</button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <small>© 2025 CSS Lab • Created for learning • No external libraries</small>
+    </div>
+  </footer>
+
+</body>
+</html>
 
